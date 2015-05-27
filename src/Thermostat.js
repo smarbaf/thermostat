@@ -7,18 +7,18 @@ function Thermostat(){
 
 
 Thermostat.prototype.increase = function() {
-  return this.temp += 1
+  if((this.powerSave === true && this.temp < 25) || (this.powerSave === false && this.temp < 32)) this.temp += 1
 };
 
 Thermostat.prototype.decrease = function() {
-  return this.temp -= 1
+  if(this.temp > 10) this.temp -= 1
 
 };
 
 Thermostat.prototype.resetTherm = function() {
-  this.temp = 20
-  this.maxTemp = 25
-  this.powerSave = true
+  this.temp = 20;
+  this.maxTemp = 25;
+  this.powerSave = true;
 };
 
 Thermostat.prototype.powerSaveButton = function() {
@@ -28,6 +28,7 @@ Thermostat.prototype.powerSaveButton = function() {
   }
   else{
     this.maxTemp = 25;
-    this.powerSave = true
+    this.powerSave = true;
+    this.temp = 25;
   }
 };

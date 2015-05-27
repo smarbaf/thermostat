@@ -54,6 +54,29 @@ describe('Thermostat', function()  {
 
      });
 
+     it('does not allow the temperature to drop below minimum', function()  {
+        thermostat.temp = 10
+        thermostat.decrease()
+        expect(thermostat.temp).toBe(10)
+     });
+
+     it('does not allow temperature above 32 with Power Save mode off', function()  {
+        thermostat.powerSaveButton()
+        expect(thermostat.maxTemp).toBe(32)
+
+     });
+
+     it('does not allow temperature above 25 with Power Save mode on', function()  {
+        thermostat.temp = 25
+        thermostat.increase()
+        expect(thermostat.maxTemp).toBe(25)
+     });
+     it('resets the temperature to 25 if higher when Power Save mode goes on', function()  {
+        thermostat.powerSaveButton()
+        thermostat.temp = 26
+        thermostat.powerSaveButton()
+        expect(thermostat.temp).toBe(25)
+     });
  });
 
 })
