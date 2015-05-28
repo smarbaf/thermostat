@@ -51,7 +51,6 @@ describe('Thermostat', function()  {
        expect(thermostat.temp).toBe(20);
        expect(thermostat.maxTemp).toBe(25);
        expect(thermostat.powerSave).toBe(true);
-
      });
 
      it('does not allow the temperature to drop below minimum', function()  {
@@ -63,7 +62,6 @@ describe('Thermostat', function()  {
      it('does not allow temperature above 32 with Power Save mode off', function()  {
         thermostat.powerSaveButton()
         expect(thermostat.maxTemp).toBe(32)
-
      });
 
      it('does not allow temperature above 25 with Power Save mode on', function()  {
@@ -71,6 +69,7 @@ describe('Thermostat', function()  {
         thermostat.increase()
         expect(thermostat.maxTemp).toBe(25)
      });
+
      it('resets the temperature to 25 if higher when Power Save mode goes on', function()  {
         thermostat.powerSaveButton()
         thermostat.temp = 26
@@ -79,4 +78,23 @@ describe('Thermostat', function()  {
      });
  });
 
-})
+  describe('the thermostat changes color according to heat index', function() {
+    it('is green when the temperature is less than 18', function() {
+      for(i = 1; i < 4; i ++) {
+        thermostat.decrease();
+    };
+      expect(thermostat.colour).toEqual('Green')
+    });
+    it('Red when greater than 24 degrees', function () {
+      for(i = 1; i < 6; i ++) {
+        thermostat.increase();
+      };
+      expect(thermostat.colour).toEqual('Red')
+    });
+    it('Yellow for any other temperature', function () {
+      expect(thermostat.colour).toEqual('Yellow')
+    });
+  });
+});
+
+
