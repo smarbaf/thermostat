@@ -48,11 +48,4 @@ Thermostat.prototype.changeColour = function() {
   };
 };
 
-Thermostat.prototype.update = function() {
-   document.body.style.background = this.colour;
-   document.getElementById('temp').innerHTML = thermostat.temp + " " + this.colour;
-
-};
-
-thermostat = new Thermostat
 
