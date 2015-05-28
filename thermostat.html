@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<p id="demo"><h1>THERMOSTAT</h1></p>
+
+<script src="./src/Thermostat.js"></script>
+
+</head>
+<body>
+  <button type='button' id='tempup' onclick='thermostat.increase(), thermostat.update()'>UP</button>
+  <button type='button' id='tempup' onclick='thermostat.decrease(), thermostat.update()'>DOWN</button>
+  <input type='checkbox' checked='true' onclick='thermostat.powerSaveButton(), thermostat.update()'>Power Saver<br>
+  <button type='button' id='tempup' onclick='thermostat.resetTherm(), thermostat.update()'>RESET</button>
+
+<br>
+<br>
+
+The current temperature is:
+<br>
+<br>
+<div id='temp'></div>
+
+</script>
+
+</body>
+</html>
+
